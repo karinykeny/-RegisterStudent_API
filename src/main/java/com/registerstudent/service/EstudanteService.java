@@ -8,4 +8,6 @@ public interface EstudanteService {
 
 	Estudante findById(Integer matricula);
 
+	Estudante update(Estudante estudante);
+
 }

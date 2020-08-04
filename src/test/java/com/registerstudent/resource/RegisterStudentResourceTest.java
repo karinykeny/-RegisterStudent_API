@@ -15,6 +15,8 @@ import com.registerstudent.modal.enums.UfEnum;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
 
 public class RegisterStudentResourceTest extends BaseTest {
 	
@@ -67,6 +69,22 @@ public class RegisterStudentResourceTest extends BaseTest {
 		RestAssured.given().when().get("/estudantes/1")
 			.then().log().body().assertThat().statusCode(200)
 			.body("cpf", Matchers.is("49481992063"));
+	}
+	
+	@Test
+	public void updateEstudante() throws Exception {
+		
+		Response response = RestAssured.request(Method.GET, "/estudantes/1");
+		Gson gson = new Gson();
+		Estudante estudante = gson.fromJson(response.asString(), Estudante.class);
+		estudante.setEmail("testeupdate@teste.com.br");
+		
+		String json = gson.toJson(estudante);
+		
+		RestAssured.given().contentType(ContentType.JSON)
+			.body(json).when().put("/estudantes").then()
+			.log().body().assertThat().statusCode(200)
+			.body("email", Matchers.is("testeupdate@teste.com.br"));
 	}
 
 }

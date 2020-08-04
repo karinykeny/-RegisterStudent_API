@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +30,11 @@ public class EstudanteController {
 	@GetMapping("/{matricula}")
 	public ResponseEntity<Estudante> FindByEstudante(@PathVariable Integer matricula) {
 		return ResponseEntity.ok(service.findById(matricula));
+	}
+	
+	@PutMapping
+	public ResponseEntity<Estudante> updateByEstudante(@RequestBody Estudante estudante) {
+		return ResponseEntity.ok(service.update(estudante));
 	}
 
 }

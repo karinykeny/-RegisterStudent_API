@@ -2,6 +2,7 @@ package com.registerstudent.service.impl;
 
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,13 @@ public class EstudanteServiceImpl implements EstudanteService {
 			throw new EmptyResultDataAccessException(1);
 		}
 		return estudante.get();
+	}
+
+	@Override
+	public Estudante update(Estudante estudante) {
+		Estudante updateEstudante = repository.findById(estudante.getMatricula()).get();
+		BeanUtils.copyProperties(estudante, updateEstudante, "matricula");
+		return repository.save(updateEstudante);
 	}
 
 }
