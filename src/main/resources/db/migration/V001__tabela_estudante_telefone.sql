@@ -5,7 +5,7 @@ CREATE TABLE estudante (
 	email varchar(100) NULL,
 	cpf varchar(11) NULL,
 	rua varchar(100) NULL,
-	numero integer NULL,
+	numero int NULL,
 	bairro varchar(50) NULL,
 	cidade varchar(50) NULL,
 	uf char(2) NULL,
@@ -15,8 +15,8 @@ CREATE TABLE estudante (
 
 CREATE TABLE telefone (
 	id int UNSIGNED NOT NULL AUTO_INCREMENT, 
-	telefone varchar(11) NULL,
-	matricula int UNSIGNED NOT NULL,
+	numero_telefone varchar(11) NULL,
+	matricula int UNSIGNED,
 	PRIMARY KEY (id),
 	KEY matricula (matricula),
 	CONSTRAINT matricula FOREIGN KEY (matricula) REFERENCES estudante (matricula)

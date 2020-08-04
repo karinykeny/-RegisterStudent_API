@@ -37,7 +37,7 @@ public class Estudante implements Serializable {
 	private String sobrenome;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="matricula")
+	@JoinColumn(name="matricula", referencedColumnName="matricula")
 	private List<Telefone> telefones;
 	
 	@Email

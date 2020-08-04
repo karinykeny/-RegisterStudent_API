@@ -1,8 +1,8 @@
 package com.registerstudent.modal;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +17,8 @@ public class Telefone implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	private BigInteger numero;
+	@Column(name = "numero_telefone")
+	private String numeroTelefone;
 
 	public Telefone() {}
 
@@ -29,12 +30,14 @@ public class Telefone implements Serializable {
 		this.id = id;
 	}
 
-	public BigInteger getNumero() {
-		return numero;
+	public String getNumeroTelefone() {
+		return numeroTelefone;
 	}
 
-	public void setNumero(BigInteger numero) {
-		this.numero = numero;
+	public void setNumeroTelefone(String numeroTelefone) {
+		this.numeroTelefone = numeroTelefone;
 	}
-	
+
+
+
 }
