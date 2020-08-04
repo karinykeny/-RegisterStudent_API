@@ -64,7 +64,7 @@ public class RegisterStudentResourceTest extends BaseTest {
 	}
 	
 	@Test
-	public void consultStudante() throws Exception {
+	public void consultStudant() throws Exception {
 		
 		RestAssured.given().when().get("/estudantes/1")
 			.then().log().body().assertThat().statusCode(200)
@@ -72,7 +72,7 @@ public class RegisterStudentResourceTest extends BaseTest {
 	}
 	
 	@Test
-	public void updateEstudante() throws Exception {
+	public void updateStudant() throws Exception {
 		
 		Response response = RestAssured.request(Method.GET, "/estudantes/1");
 		Gson gson = new Gson();
@@ -85,6 +85,13 @@ public class RegisterStudentResourceTest extends BaseTest {
 			.body(json).when().put("/estudantes").then()
 			.log().body().assertThat().statusCode(200)
 			.body("email", Matchers.is("testeupdate@teste.com.br"));
+	}
+	
+	@Test
+	public void ListStudant() throws Exception {
+		
+		RestAssured.given().when().get("/estudantes")
+			.then().log().body().assertThat().statusCode(200);
 	}
 
 }

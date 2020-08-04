@@ -1,5 +1,6 @@
 package com.registerstudent.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
@@ -36,6 +37,11 @@ public class EstudanteServiceImpl implements EstudanteService {
 		Estudante updateEstudante = repository.findById(estudante.getMatricula()).get();
 		BeanUtils.copyProperties(estudante, updateEstudante, "matricula");
 		return repository.save(updateEstudante);
+	}
+
+	@Override
+	public List<Estudante> findAll() {
+		return repository.findAll();
 	}
 
 }

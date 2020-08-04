@@ -1,5 +1,7 @@
 package com.registerstudent.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +37,11 @@ public class EstudanteController {
 	@PutMapping
 	public ResponseEntity<Estudante> updateByEstudante(@RequestBody Estudante estudante) {
 		return ResponseEntity.ok(service.update(estudante));
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<Estudante>> List() {
+		return ResponseEntity.ok(service.findAll());
 	}
 
 }
