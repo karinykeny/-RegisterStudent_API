@@ -19,6 +19,8 @@ public class Endereco {
 	
 	private String cep;
 	
+	private String complemento;
+	
 	public Endereco() {}
 	
 	public String getRua() {
@@ -67,6 +69,14 @@ public class Endereco {
 	
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 	
 }
