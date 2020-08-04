@@ -3,6 +3,7 @@ package com.registerstudent.resource;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import com.google.gson.Gson;
@@ -58,6 +59,14 @@ public class RegisterStudentResourceTest extends BaseTest {
 			.body(json).log().body().when().post("/estudantes")
 			.then().assertThat().statusCode(201).log().body();
 		
+	}
+	
+	@Test
+	public void consultStudante() throws Exception {
+		
+		RestAssured.given().when().get("/estudantes/1")
+			.then().log().body().assertThat().statusCode(200)
+			.body("cpf", Matchers.is("49481992063"));
 	}
 
 }

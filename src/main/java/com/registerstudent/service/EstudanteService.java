@@ -6,4 +6,6 @@ public interface EstudanteService {
 
 	Estudante seve(Estudante estudante);
 
+	Estudante findById(Integer matricula);
+
 }
