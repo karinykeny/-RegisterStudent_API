@@ -1,16 +1,17 @@
 package com.registerstudent.modal;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -18,8 +19,10 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity(name = "estudante")
-public class Estudante {
-	
+public class Estudante implements Serializable {
+
+	private static final long serialVersionUID = 7578163422956834163L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "matricula")
@@ -43,7 +46,7 @@ public class Estudante {
 	@CPF
 	private String cpf;
 	
-	@OneToOne
+	@Embedded
 	private Endereco endereco;
 
 	public Estudante() {}

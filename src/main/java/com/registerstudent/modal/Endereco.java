@@ -1,24 +1,13 @@
 package com.registerstudent.modal;
 
-import java.io.Serializable;
-
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import com.registerstudent.modal.enums.UfEnum;
 
-@Entity(name = "endereco")
-public class Endereco implements Serializable{
-	
-	private static final long serialVersionUID = -8968371764909223882L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+@Embeddable
+public class Endereco {
 	
 	private String rua;
 	private Integer numero;
@@ -27,17 +16,10 @@ public class Endereco implements Serializable{
 	
 	@Enumerated(EnumType.STRING)
 	private UfEnum uf;
+	
 	private String cep;
 	
 	public Endereco() {}
-	
-	public Integer getId() {
-		return id;
-	}
-	
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	
 	public String getRua() {
 		return rua;
@@ -85,12 +67,6 @@ public class Endereco implements Serializable{
 	
 	public void setCep(String cep) {
 		this.cep = cep;
-	}
-
-	@Override
-	public String toString() {
-		return "Endereco [id=" + id + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", cidade="
-				+ cidade + ", uf=" + uf + ", cep=" + cep + "]";
 	}
 	
 }
