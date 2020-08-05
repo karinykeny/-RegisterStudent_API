@@ -64,15 +64,15 @@ public class RegisterStudentResourceTest extends BaseTest {
 	}
 	
 	@Test
-	public void consultStudant() throws Exception {
+	public void consultStudent() throws Exception {
 		
-		RestAssured.given().when().get("/estudantes/1")
+		RestAssured.given().when().get("/estudantes/2")
 			.then().log().body().assertThat().statusCode(200)
 			.body("cpf", Matchers.is("49481992063"));
 	}
 	
 	@Test
-	public void updateStudant() throws Exception {
+	public void updateStudent() throws Exception {
 		
 		Response response = RestAssured.request(Method.GET, "/estudantes/2");
 		Gson gson = new Gson();
@@ -88,17 +88,25 @@ public class RegisterStudentResourceTest extends BaseTest {
 	}
 	
 	@Test
-	public void ListStudant() throws Exception {
+	public void ListStudent() throws Exception {
 		
 		RestAssured.given().when().get("/estudantes")
 			.then().log().body().assertThat().statusCode(200);
 	}
 	
 	@Test
-	public void deletStudant() throws Exception {
+	public void deletStudent() throws Exception {
 		
 		RestAssured.given().when().delete("/estudantes/1")
 			.then().assertThat().statusCode(204);
+	}
+	
+	@Test
+	public void studentFilterByName() throws Exception {
+		
+		RestAssured.given().log().body().when().get("/estudantes?filter&nome=teste2")
+			.then().log().body().assertThat().statusCode(200)
+			.body("nome", Matchers.hasItem("teste2"));
 	}
 
 }

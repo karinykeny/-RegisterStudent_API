@@ -32,7 +32,7 @@ public class EstudanteController {
 	}
 	
 	@GetMapping("/{matricula}")
-	public ResponseEntity<Estudante> FindByEstudante(@PathVariable Integer matricula) {
+	public ResponseEntity<Estudante> findByEstudante(@PathVariable Integer matricula) {
 		return ResponseEntity.ok(service.findById(matricula));
 	}
 	
@@ -42,7 +42,7 @@ public class EstudanteController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Estudante>> List() {
+	public ResponseEntity<List<Estudante>> list() {
 		return ResponseEntity.ok(service.findAll());
 	}
 	
@@ -50,6 +50,10 @@ public class EstudanteController {
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteEstudante(@PathVariable Integer matricula) {
 		service.delete(matricula);
+	}
+	
+	public ResponseEntity<List<Estudante>> filter(Estudante estudante) {
+		return ResponseEntity.ok(service.filterAll(estudante));
 	}
 
 }

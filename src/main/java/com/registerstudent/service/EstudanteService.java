@@ -16,4 +16,6 @@ public interface EstudanteService {
 
 	void delete(Integer matricula);
 
+	List<Estudante> filterAll(Estudante estudante);
+
 }

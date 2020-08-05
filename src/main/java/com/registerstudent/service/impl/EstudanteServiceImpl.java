@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.registerstudent.modal.Estudante;
@@ -50,6 +51,11 @@ public class EstudanteServiceImpl implements EstudanteService {
 		if (estudante.isPresent()) {
 			repository.delete(estudante.get());
 		} 
+	}
+
+	@Override
+	public List<Estudante> filterAll(Estudante estudante) {
+		return repository.findAll(Example.of(estudante));
 	}
 
 }
