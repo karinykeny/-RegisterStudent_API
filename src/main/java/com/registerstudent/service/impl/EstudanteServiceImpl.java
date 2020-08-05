@@ -44,4 +44,12 @@ public class EstudanteServiceImpl implements EstudanteService {
 		return repository.findAll();
 	}
 
+	@Override
+	public void delete(Integer matricula) {
+		Optional<Estudante> estudante = repository.findById(matricula);
+		if (estudante.isPresent()) {
+			repository.delete(estudante.get());
+		} 
+	}
+
 }

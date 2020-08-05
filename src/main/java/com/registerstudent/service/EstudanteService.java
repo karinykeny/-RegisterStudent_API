@@ -14,4 +14,6 @@ public interface EstudanteService {
 
 	List<Estudante> findAll();
 
+	void delete(Integer matricula);
+
 }

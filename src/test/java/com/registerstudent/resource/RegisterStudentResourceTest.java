@@ -74,7 +74,7 @@ public class RegisterStudentResourceTest extends BaseTest {
 	@Test
 	public void updateStudant() throws Exception {
 		
-		Response response = RestAssured.request(Method.GET, "/estudantes/1");
+		Response response = RestAssured.request(Method.GET, "/estudantes/2");
 		Gson gson = new Gson();
 		Estudante estudante = gson.fromJson(response.asString(), Estudante.class);
 		estudante.setEmail("testeupdate@teste.com.br");
@@ -92,6 +92,13 @@ public class RegisterStudentResourceTest extends BaseTest {
 		
 		RestAssured.given().when().get("/estudantes")
 			.then().log().body().assertThat().statusCode(200);
+	}
+	
+	@Test
+	public void deletStudant() throws Exception {
+		
+		RestAssured.given().when().delete("/estudantes/1")
+			.then().assertThat().statusCode(204);
 	}
 
 }
