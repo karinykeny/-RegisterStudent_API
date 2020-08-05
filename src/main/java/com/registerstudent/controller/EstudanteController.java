@@ -2,6 +2,8 @@ package com.registerstudent.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +29,7 @@ public class EstudanteController {
 	private EstudanteService service;
 	
 	@PostMapping
-	public ResponseEntity<Estudante> save(@RequestBody Estudante estudante) {
+	public ResponseEntity<Estudante> save(@Valid @RequestBody Estudante estudante) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.seve(estudante));
 	}
 	
@@ -37,7 +39,7 @@ public class EstudanteController {
 	}
 	
 	@PutMapping
-	public ResponseEntity<Estudante> updateByEstudante(@RequestBody Estudante estudante) {
+	public ResponseEntity<Estudante> updateByEstudante(@Valid @RequestBody Estudante estudante) {
 		return ResponseEntity.ok(service.update(estudante));
 	}
 	
@@ -52,6 +54,7 @@ public class EstudanteController {
 		service.delete(matricula);
 	}
 	
+	@GetMapping(params = "filter")
 	public ResponseEntity<List<Estudante>> filter(Estudante estudante) {
 		return ResponseEntity.ok(service.filterAll(estudante));
 	}

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 @Entity(name = "telefone")
 public class Telefone implements Serializable {
@@ -17,6 +18,7 @@ public class Telefone implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Size(max = 11, message = "O telefone deve ter no máximo 11 números")
 	@Column(name = "numero_telefone")
 	private String numeroTelefone;
 

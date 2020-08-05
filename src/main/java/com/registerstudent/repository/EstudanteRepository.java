@@ -6,4 +6,6 @@ import com.registerstudent.modal.Estudante;
 
 public interface EstudanteRepository extends JpaRepository<Estudante, Integer> {
 
+	Estudante findByCpf(String cpf);
+
 }

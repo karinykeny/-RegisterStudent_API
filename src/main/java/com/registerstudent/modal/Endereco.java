@@ -3,6 +3,7 @@ package com.registerstudent.modal;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.validation.constraints.Size;
 
 import com.registerstudent.modal.enums.UfEnum;
 
@@ -17,6 +18,7 @@ public class Endereco {
 	@Enumerated(EnumType.STRING)
 	private UfEnum uf;
 	
+	@Size(min = 8, max = 8)
 	private String cep;
 	
 	private String complemento;

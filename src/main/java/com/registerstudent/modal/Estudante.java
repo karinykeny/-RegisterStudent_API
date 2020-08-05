@@ -44,6 +44,7 @@ public class Estudante implements Serializable {
 	private String email;
 	
 	@CPF
+	@NotNull
 	private String cpf;
 	
 	@Embedded
