@@ -66,7 +66,7 @@ public class RegisterStudentResourceTest extends BaseTest {
 	@Test
 	public void consultStudent() throws Exception {
 		
-		RestAssured.given().when().get("/estudantes/2")
+		RestAssured.given().when().get("/estudantes/101")
 			.then().log().body().assertThat().statusCode(200)
 			.body("cpf", Matchers.is("44911414014"));
 	}
@@ -74,7 +74,7 @@ public class RegisterStudentResourceTest extends BaseTest {
 	@Test
 	public void updateStudent() throws Exception {
 		
-		Response response = RestAssured.request(Method.GET, "/estudantes/2");
+		Response response = RestAssured.request(Method.GET, "/estudantes/101");
 		Gson gson = new Gson();
 		Estudante estudante = gson.fromJson(response.asString(), Estudante.class);
 		estudante.setEmail("testeupdate@teste.com.br");
@@ -97,7 +97,7 @@ public class RegisterStudentResourceTest extends BaseTest {
 	@Test
 	public void deletStudent() throws Exception {
 		
-		RestAssured.given().when().delete("/estudantes/1")
+		RestAssured.given().when().delete("/estudantes/100")
 			.then().assertThat().statusCode(204);
 	}
 	

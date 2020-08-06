@@ -45,7 +45,7 @@
 
 ##### Consultar estudante
 
-> URI: http://localhost:8080/estudantes/2
+> URI: http://localhost:8080/estudantes/101
 > Method: GET
 
 - Response:
@@ -53,7 +53,7 @@
 
 ##### Alterar estudante
 
-> URI: http://localhost:8080/estudantes/2
+> URI: http://localhost:8080/estudantes/101
 > Method: PUT
 
 - Response:
@@ -69,7 +69,7 @@
 
 ##### Excluir estudante
 
-> URI: http://localhost:8080/estudantes/1
+> URI: http://localhost:8080/estudantes/100
 > Method: DELETE
 
 - Response:
