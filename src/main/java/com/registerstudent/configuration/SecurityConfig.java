@@ -1,20 +1,23 @@
 package com.registerstudent.configuration;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
+@Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService());
+		auth.inMemoryAuthentication()
+			.withUser("studantapi").password(passwordEncoder().encode("@studant@123")).roles("ROLE");
 	}
 	
 	@Override
@@ -27,11 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable();
 	}
 	
-	public UserDetailsService userDetailsService() {
-	    @SuppressWarnings("deprecation")
-		User.UserBuilder builder = User.withDefaultPasswordEncoder();
-	    InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-	    manager.createUser(builder.username("studantapi").password("@studant@123").roles("ROLE").build());
-	    return manager;
+	@Bean
+	PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 }

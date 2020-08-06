@@ -68,7 +68,7 @@ public class RegisterStudentResourceTest extends BaseTest {
 		
 		RestAssured.given().when().get("/estudantes/2")
 			.then().log().body().assertThat().statusCode(200)
-			.body("cpf", Matchers.is("49481992063"));
+			.body("cpf", Matchers.is("44911414014"));
 	}
 	
 	@Test
