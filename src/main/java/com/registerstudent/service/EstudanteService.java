@@ -2,7 +2,7 @@ package com.registerstudent.service;
 
 import java.util.List;
 
-import com.registerstudent.modal.Estudante;
+import com.registerstudent.model.Estudante;
 
 public interface EstudanteService {
 

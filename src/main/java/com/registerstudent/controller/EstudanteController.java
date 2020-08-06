@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.registerstudent.modal.Estudante;
+import com.registerstudent.model.Estudante;
 import com.registerstudent.service.EstudanteService;
 
 
@@ -29,7 +29,7 @@ public class EstudanteController {
 	private EstudanteService service;
 	
 	@PostMapping
-	public ResponseEntity<Estudante> save(@Valid @RequestBody Estudante estudante) {
+	public ResponseEntity<Estudante> seve(@Valid @RequestBody Estudante estudante) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.seve(estudante));
 	}
 	

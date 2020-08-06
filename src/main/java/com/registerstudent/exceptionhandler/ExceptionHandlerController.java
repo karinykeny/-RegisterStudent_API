@@ -25,7 +25,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.registerstudent.exceptionhandler.DetalhesErro.Campo;
 
 @ControllerAdvice
-public class ExceptionRendlerController extends ResponseEntityExceptionHandler {
+public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
 	
 	@Autowired
 	private MessageSource messageSource;	
@@ -33,8 +33,8 @@ public class ExceptionRendlerController extends ResponseEntityExceptionHandler {
 	@Autowired
 	private DetalhesErro detalhesErro;
 	
-	@ExceptionHandler({ NegocioExcepition.class })
-	public ResponseEntity<Object> handleNegocio(NegocioExcepition ex, WebRequest request) {
+	@ExceptionHandler({ NegocioException.class })
+	public ResponseEntity<Object> handleNegocio(NegocioException ex, WebRequest request) {
 		
 		HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
 		

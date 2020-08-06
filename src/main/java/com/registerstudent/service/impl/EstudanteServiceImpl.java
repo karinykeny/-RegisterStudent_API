@@ -9,8 +9,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
-import com.registerstudent.exceptionhandler.NegocioExcepition;
-import com.registerstudent.modal.Estudante;
+import com.registerstudent.exceptionhandler.NegocioException;
+import com.registerstudent.model.Estudante;
 import com.registerstudent.repository.EstudanteRepository;
 import com.registerstudent.service.EstudanteService;
 
@@ -25,7 +25,7 @@ public class EstudanteServiceImpl implements EstudanteService {
 		Estudante estudanteExistente = repository.findByCpf(estudante.getCpf());
 		
 		if (estudanteExistente != null && !estudanteExistente.equals(estudante)) {
-			throw new NegocioExcepition("CPF já cadastrado.");
+			throw new NegocioException("CPF já cadastrado.");
 		}
 		
 		return repository.save(estudante);
@@ -56,7 +56,7 @@ public class EstudanteServiceImpl implements EstudanteService {
 	public void delete(Integer matricula) {
 		Optional<Estudante> estudante = repository.findById(matricula);
 		if (!estudante.isPresent()) {
-			throw new NegocioExcepition("Estudante não encontrado.");
+			throw new NegocioException("Estudante não encontrado.");
 		} 
 		
 		repository.delete(estudante.get());
@@ -65,7 +65,7 @@ public class EstudanteServiceImpl implements EstudanteService {
 	@Override
 	public List<Estudante> filterAll(Estudante estudante) {	
 		if(isNull(estudante)) {
-			throw new NegocioExcepition("Parâmetro de pesquisa incorreto.");
+			throw new NegocioException("Parâmetro de pesquisa incorreto.");
 		}
 		
 		return repository.findAll(Example.of(estudante));

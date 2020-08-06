@@ -2,7 +2,7 @@ package com.registerstudent.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.registerstudent.modal.Estudante;
+import com.registerstudent.model.Estudante;
 
 public interface EstudanteRepository extends JpaRepository<Estudante, Integer> {
 

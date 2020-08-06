@@ -17,14 +17,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication()
-			.withUser("studantapi").password(passwordEncoder().encode("@studant@123")).roles("ROLE");
+			.withUser("studantapi")
+			.password(passwordEncoder().encode("@studant@123"))
+			.roles("ROLE");
 	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.anyRequest().authenticated()
-			.and()
+			.anyRequest().authenticated().and()
 			.httpBasic().and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.csrf().disable();

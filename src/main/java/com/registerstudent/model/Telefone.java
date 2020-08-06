@@ -1,4 +1,4 @@
-package com.registerstudent.modal;
+package com.registerstudent.model;
 
 import java.io.Serializable;
 

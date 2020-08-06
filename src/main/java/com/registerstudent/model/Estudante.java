@@ -1,4 +1,4 @@
-package com.registerstudent.modal;
+package com.registerstudent.model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -28,11 +30,13 @@ public class Estudante implements Serializable {
 	@Column(name = "matricula")
 	private Integer matricula;
 	
-	@NotNull
+	@NotEmpty
+	@NotBlank
 	@Size(min=3)
 	private String nome;
 	
-	@NotNull
+	@NotEmpty
+	@NotBlank
 	@Size(min=3)
 	private String sobrenome;
 	
@@ -43,7 +47,7 @@ public class Estudante implements Serializable {
 	@Email
 	private String email;
 	
-	@CPF
+	@CPF(message = "CPF inválido")
 	@NotNull
 	private String cpf;
 	

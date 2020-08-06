@@ -8,10 +8,10 @@ import org.junit.Test;
 
 import com.google.gson.Gson;
 import com.registerstudent.BaseTest;
-import com.registerstudent.modal.Endereco;
-import com.registerstudent.modal.Estudante;
-import com.registerstudent.modal.Telefone;
 import com.registerstudent.modal.enums.UfEnum;
+import com.registerstudent.model.Endereco;
+import com.registerstudent.model.Estudante;
+import com.registerstudent.model.Telefone;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
