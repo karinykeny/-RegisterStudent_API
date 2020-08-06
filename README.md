@@ -1,10 +1,15 @@
 # RegisterStudent_API
 
 > Projeto API Rest para cadastro de estudantes
+- Headers: 
+> Content-Type: application/json
+- Authorization: 
+> Type: Basic Auth
+> Username: studantapi
+> Password: @studant@123
 
 ##### Criar cadastro de estudante
-
-> Headers: Content-Type: application/json
+ 
 > URI: http://localhost:8080/estudantes
 > Method: POST
 > Body:
