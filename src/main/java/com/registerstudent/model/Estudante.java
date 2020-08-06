@@ -47,7 +47,7 @@ public class Estudante implements Serializable {
 	@Email
 	private String email;
 	
-	@CPF(message = "CPF inválido")
+	@CPF
 	@NotNull
 	private String cpf;
 	

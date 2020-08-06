@@ -29,8 +29,8 @@ public class EstudanteController {
 	private EstudanteService service;
 	
 	@PostMapping
-	public ResponseEntity<Estudante> seve(@Valid @RequestBody Estudante estudante) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(service.seve(estudante));
+	public ResponseEntity<Estudante> save(@Valid @RequestBody Estudante estudante) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(estudante));
 	}
 	
 	@GetMapping("/{matricula}")

@@ -21,7 +21,7 @@ public class EstudanteServiceImpl implements EstudanteService {
 	private EstudanteRepository repository;
 
 	@Override
-	public Estudante seve(Estudante estudante) {
+	public Estudante save(Estudante estudante) {
 		Estudante estudanteExistente = repository.findByCpf(estudante.getCpf());
 		
 		if (estudanteExistente != null && !estudanteExistente.equals(estudante)) {

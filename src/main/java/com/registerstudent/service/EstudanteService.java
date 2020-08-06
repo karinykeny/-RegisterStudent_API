@@ -6,7 +6,7 @@ import com.registerstudent.model.Estudante;
 
 public interface EstudanteService {
 
-	Estudante seve(Estudante estudante);
+	Estudante save(Estudante estudante);
 
 	Estudante findById(Integer matricula);
 

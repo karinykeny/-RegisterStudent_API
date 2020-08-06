@@ -3,7 +3,7 @@ CREATE TABLE estudante (
 	nome varchar(30) NOT NULL,
 	sobrenome varchar(70) NOT NULL,
 	email varchar(100) NULL,
-	cpf varchar(11) NULL,
+	cpf varchar(11) UNIQUE NOT NULL,
 	rua varchar(100) NULL,
 	numero int NULL,
 	bairro varchar(50) NULL,
